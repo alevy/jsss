@@ -1,7 +1,18 @@
 load("lib/test.js");
 load("src/polynomial.js");
 
-JSTest.RunTests({
+JSTest.AddTestSuite({
+  
+  testPolynomialContructorCanTakeArray: function() {
+    var arr = [0,2,3,4];
+    var poly = new Polynomial(arr);
+    JSTest.assertEqual(arr, poly.polynomial);
+  },
+  
+  testPolynomialContructorCanTakeVarargInts: function() {
+    var poly = new Polynomial(0,2,3,4);
+    JSTest.assertEqual(4, poly.polynomial.length);
+  },
   
   testRandomPolynomialArrayLengthIsOneGreaterThanDegree: function() {
     poly = Polynomial.randomPolynomial(6 , 0);
