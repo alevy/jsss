@@ -30,18 +30,6 @@ JSTest.AddTestSuite({
     JSTest.assertEqual(540, poly.evaluate(10));
   },
   
-  testInerpolateRequiredDegree: function() {
-    JSTest.assertException(function() {
-      Polynomial.interpolate([[1,21], [2,55], [3,107]]);
-    });
-  },
-  
-  testInterpolateSmallIntegers: function() {
-    var expected = new Polynomial([5, 7, 9]);
-    var actual = Polynomial.interpolate([[1,21], [2,55], [3,107]], 2);
-    JSTest.assertEqual(expected, actual);
-  },
-  
   testInteceptSmallIntegers: function() {
     var expected = 5;
     var actual = Polynomial.intercept([[1,21], [2,55], [3,107]], 2);

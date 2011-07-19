@@ -29,33 +29,6 @@ Polynomial.randomPolynomial = function(degree, intercept, n) {
   return new Polynomial(result);
 };
 
-Polynomial.interpolate = function(pairs, degree) {
-  if (!degree || degree < 1) {
-    throw "Degree must be a positive integer!";
-  }
-  var yArr = [];
-  var xMArr = [];
-  for (var i = 0; i < pairs.length && i < degree + 1; ++i) {
-    var pair = pairs[i];
-    var x = pair[0];
-    var y = pair[1];
-    yArr.push(y);
-    var xArr = [];
-    for (var j = 0; j < degree + 1; ++j) {
-      xArr.push(Math.pow(x, j));
-    }
-    xMArr.push(xArr);
-  }
-  var X = $M(xMArr);
-  var Y = $M(yArr);
-  var A = X.inverse().multiply(Y);
-  var result = [];
-  for (var i = 1; i <= degree + 1; ++i) {
-    result.push(A.e(i, 1));
-  }
-  return new Polynomial(result);
-};
-
 /**
  * Finds the intercept of the polynomial of given degree that fits the given pairs using the Lagrange polynomial form.
 **/
