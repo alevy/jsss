@@ -12,7 +12,7 @@ var Polynomial = function() {
   }
   for (var i = 0; i < polynomial.length; ++i) {
     if (!polynomial[i].multiply) {
-      polynomial[i] = $N(polynomial[i]);
+      polynomial[i] = BigInteger(polynomial[i]);
     }
   }
   this.polynomial = polynomial;
@@ -64,17 +64,17 @@ Polynomial.intercept = function(ps, degree) {
   for (var i = 0; i < ps.length; ++i) {
     pairs[i] = [ps[i][0], ps[i][1]];
     if (!pairs[i][0].numerator) {
-      pairs[i][0] = $N(pairs[i][0]);
+      pairs[i][0] = $F(pairs[i][0]);
     }
     if (!pairs[i][1].numerator) {
-      pairs[i][1] = $N(pairs[i][1]);
+      pairs[i][1] = $F(pairs[i][1]);
     }
   }
   
-  var result = $N(0);
-  var negative1 = $N(-1);
+  var result = $F(0);
+  var negative1 = $F(-1);
   for (var i = 0; i < degree + 1; ++i) {
-    var intermediate = $N(1);
+    var intermediate = $F(1);
     for (var j = 0; j < degree + 1; ++j) {
       if (i != j) {
         intermediate = intermediate.multiply(negative1.multiply(pairs[j][0].divide(pairs[i][0].subtract(pairs[j][0]))));
@@ -87,9 +87,7 @@ Polynomial.intercept = function(ps, degree) {
 
 Polynomial.prototype = {
   evaluate: function(x) {
-    if (!x.pow) {
-      x= $N(x);
-    }
+    x= BigInteger(x);
     var result = this.polynomial[0];
     var k = 1;
     for (var i = 1; i < this.polynomial.length; ++i) {
