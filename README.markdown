@@ -34,9 +34,10 @@ The call will split the data into pieces <= 2^16, and return dictionary of the f
 The elements in the data array are `BigInteger`s, as are the sub-elements in each of the arrays in the `shares` array.
 
 ### Reconstructing Data
-To reconstruct the original data, pass to `SecretSharing#solve` a `shares` array of the same form returned from `SecretSharing#generate` (except it may contain as few as `threshold` shares), the `threshold` (int) and optionally an outputBase (int representing the radix of the String returned, defaults to 16):
+To reconstruct the original data, pass to `SecretSharing#solve` a `shares` array of the same form returned from `SecretSharing#generate` (except it may contain as few as `threshold` shares), the `threshold` (int) and optionally an outputBase (int representing the radix of the String returned, defaults to 10):
 
     var shares = [[share0_0, share0_1,...], [share1_0, share1_1,...],...];
-    SecretSharing.solve(shares, 7);
+    SecretSharing.solve(shares, 7, 16);
+    > "F87DB6F54"
 
-This will return a String representing the original data using the radix passed int the `outputBase` variable (default 16).
+This will return a String representing the original data using the radix passed int the `outputBase` variable (default 10).
