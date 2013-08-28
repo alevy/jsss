@@ -1,3 +1,4 @@
+// Copyright (C) 2011 Amit A. Levy
 var RationalNumber = function(numerator, denominator) {
   this.numerator = BigInteger(numerator);
   this.denominator = denominator ? BigInteger(denominator) : BigInteger.ONE;

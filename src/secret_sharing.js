@@ -1,3 +1,4 @@
+// Copyright (C) 2011 Amit A. Levy
 var SecretSharing = {}
 
 SecretSharing.generate = function(data, numShares, threshold) {

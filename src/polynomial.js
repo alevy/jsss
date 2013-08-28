@@ -1,3 +1,4 @@
+// Copyright (C) 2011 Amit A. Levy
 var Polynomial = function() {
   var polynomial;
   if (arguments.length > 0) {
